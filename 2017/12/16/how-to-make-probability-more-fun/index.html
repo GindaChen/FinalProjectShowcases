@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans,en,ja,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Probability," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概统很无聊？我就觉得概统很有意思呀～ 其实我也不知道为什么他很有意思。可能是因为老师教的有意思，也有可能是因为这本书，Wolfgang Schwarz - 40 Puzzles and Problems in Probability and Mathematical Statistics (简称PPPMS) ，带给了我很多乐趣。回想起来，学概统的时候有很多茅塞顿开的瞬间，让我欣喜不已——特别是这本">
+<meta name="keywords" content="Probability">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有意思的概率论和统计问题（1）">
+<meta property="og:url" content="https://gindachen.github.io/2017/12/16/how-to-make-probability-more-fun/index.html">
+<meta property="og:site_name" content="🐈的梦">
+<meta property="og:description" content="概统很无聊？我就觉得概统很有意思呀～ 其实我也不知道为什么他很有意思。可能是因为老师教的有意思，也有可能是因为这本书，Wolfgang Schwarz - 40 Puzzles and Problems in Probability and Mathematical Statistics (简称PPPMS) ，带给了我很多乐趣。回想起来，学概统的时候有很多茅塞顿开的瞬间，让我欣喜不已——特别是这本">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-17T07:03:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="有意思的概率论和统计问题（1）">
+<meta name="twitter:description" content="概统很无聊？我就觉得概统很有意思呀～ 其实我也不知道为什么他很有意思。可能是因为老师教的有意思，也有可能是因为这本书，Wolfgang Schwarz - 40 Puzzles and Problems in Probability and Mathematical Statistics (简称PPPMS) ，带给了我很多乐趣。回想起来，学概统的时候有很多茅塞顿开的瞬间，让我欣喜不已——特别是这本">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gindachen.github.io/2017/12/16/how-to-make-probability-more-fun/"/>
+
+
+
+
+
+  <title>有意思的概率论和统计问题（1） | 🐈的梦</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">🐈的梦</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">梦里的东西很漂亮很漂亮的哦</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gindachen.github.io/2017/12/16/how-to-make-probability-more-fun/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tairokiya & Touko">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="🐈的梦">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">有意思的概率论和统计问题（1）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-16T11:13:07-06:00">
+                2017-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>概统很无聊？我就觉得概统很有意思呀～</p>
+<p>其实我也不知道为什么他很有意思。可能是因为<a href="http://www.math.wisc.edu/~lempp/" target="_blank" rel="noopener">老师</a>教的有意思，也有可能是因为这本书，<em><a href="http://www.springer.com/in/book/9780387735115" target="_blank" rel="noopener">Wolfgang Schwarz - 40 Puzzles and Problems in Probability and Mathematical Statistics</a></em> (简称PPPMS) ，带给了我很多乐趣。回想起来，学概统的时候有很多茅塞顿开的瞬间，让我欣喜不已——特别是这本书一直在挑战我去从不同的角度观察一个问题，并提供了非常优美的解释。一个学期下来，概统知识学习了不少，也体悟了不少，感觉真正学到了有用的知识和技能，非常开心。</p>
+<p>这本书似乎还没有中文版，于是看在这本书很有意思的份上小弟尝试翻译了一下。翻译版跟“信达雅”一点都不沾边，甚至为了避免了作者无聊的展开使用了大量奇怪的剧情——也因为如此感觉越翻译越有趣（作者要是看到的话会很生气吧 :P ）。如果你有更好的建议或者提案，不妨留言给我～</p>
+<p>如果你觉得概统解决的问题太幼稚（说明你可能是大神哦～），这本书大概可以让你重温学习概统时的兴奋和激动吧（假设有的话）。如果你觉得概率论很难，那么这些问题很可能是你复习概统的起点。</p>
+<p>那么，问题开始。</p>
+<a id="more"></a>
+<h1><span id="女士优先1">女士优先（1）</span></h1>
+<p>一个箱子里装着 <span class="math inline">\(k\)</span> 张R卡和 <span class="math inline">\(1\)</span> 张UR。小绅士(Peter)和小萌软(Paula)不放回地依次从箱子里抽取一张卡，直到UR被抽取。小绅士看小萌软可爱，决定让小萌软先行以显绅士属性。小萌软也不傻：一方面，假设她先抽取，那么她可能单抽就抽中UR；另一方面，如果她第一次抽中了R，小绅士下一次抽中UR的概率就增大了不少；但是如果小绅士也没有抽中UR，那么自己再次抽卡的时候抽中UR的概率就更加大了。</p>
+<p>那么问题来了：聪明的小萌软应该接受小绅士的慷慨邀请，还是应该让小绅士先行？</p>
+<blockquote>
+<p>— PPPMS: 1.1 To Begin or Not to Begin</p>
+</blockquote>
+<h1><span id="对决赛">对决赛</span></h1>
+<p><span class="math inline">\(2n\)</span> 名玩家两两对决，其中有<span class="math inline">\(2 \le k \le n\)</span> 名是骨灰级玩家，其余的<span class="math inline">\(m =n-k\)</span> 名玩家都是新手。骨灰级玩家特别不想和骨灰级玩家对决。</p>
+<p>定义<span class="math inline">\(p(k,n)\)</span> ： 在<span class="math inline">\(n\)</span>场对决中没有任何一场对决是两个骨灰级玩家的对决。求：</p>
+<ol style="list-style-type: decimal">
+<li>求 <span class="math inline">\(p(k=2,n=5)\)</span>, 即有10名玩家进行5场对决的情况下，没有任何一场是骨灰级玩家对决的概率 ? <span class="math inline">\(p(k=20,n=50)\)</span> ?</li>
+<li>求函数 <span class="math inline">\(p(k,n)\)</span> 的表达式</li>
+</ol>
+<blockquote>
+<p>PPPMS: 1.2 A Tournament Problem</p>
+</blockquote>
+<h1><span id="女士优先2">女士优先（2）</span></h1>
+<p>小绅士(Peter)想挑战小萌软(Paula)的智商，和小萌软玩一个别样的掷骰子的游戏。记<span class="math inline">\(X=胜利时共计掷骰子的次数\)</span>。有两种胜利规则：</p>
+<ul>
+<li><span class="math inline">\(1-1\)</span>: 投掷骰子直到连续掷出两个1为胜。</li>
+<li><span class="math inline">\(1-2\)</span>: 投掷骰子直到掷出<span class="math inline">\((1,2)\)</span>序列为胜。</li>
+</ul>
+<p>小绅士为了显示绅士风度，依然让小萌软选择一种规则先行。小萌软想也不想就选择了 <span class="math inline">\(1-2\)</span> 规则 —— 毕竟在掷出一个 <span class="math inline">\(1\)</span> 之后如果没有掷出 <span class="math inline">\(2\)</span> 的话，还有一定的概率掷出 <span class="math inline">\(1\)</span> ，这样的话就可以保持当前的combo状态。这个时候小绅士露出了一丝隐秘的笑容，以至于让小萌软感受到了一种无形的智商压制。</p>
+<p>问：小萌软的选择是正确的吗？</p>
+<blockquote>
+<p>PPPMS: 1.3 Mean Waiting Time for 1-1 vs 1-2</p>
+</blockquote>
+<h1><span id="分脏">分脏</span></h1>
+<p>小绅士(Peter)和小萌软(Paula)前些天从银行里抢了不少钱，于是小绅士想挑战小萌软的运气，于是决定用掷硬币的方法决定赃款的分摊。抛出正面则小绅士赢一局，否则小萌软赢一局。两个人分别押上了5百万软妹币的赃款，共计1千万软妹币。获得 <span class="math inline">\(n\)</span> 分的人获胜。</p>
+<p>就在小绅士还剩 <span class="math inline">\(a\ (0 \le a \le n-1)\)</span> 轮就可以胜利的时候，小萌软还剩 <span class="math inline">\(b\ (0 \le b \le n-1)\)</span> 就可以胜利的时候，火警突然响了起来，天花板上的花洒淋的两个人实在坚持不下去了，于是两个人抱着1千万软妹币仓皇逃出了Lucky[^ 一个公寓]。但是仓皇之下两个人居然没有把硬币带出来，于是游戏就没有办法进行下去了。</p>
+<p>小萌软和小绅士撒娇说不如两个人取回各自的5百万软妹币各回各家。小绅士觉得小萌软太狡猾，于是决定提案如何根据现有的胜负分摊这笔钱。</p>
+<ul>
+<li>当 <span class="math inline">\(n=5, a=2,b=4\)</span>，也即小绅士：小萌软 = 3:1 的时候，小绅士应该如何提案才使得这个结果对双方都比较公平？</li>
+<li>求题设的一般情况</li>
+</ul>
+<blockquote>
+<p>PPPMS: 1.4 How to Divide up Gains in Interrupted Games</p>
+</blockquote>
+<h1><span id="抵消">抵消</span></h1>
+<p>很多人常说，抛（一枚公平的）硬币之所以公平，是因为多次试验之后，抛出正反两面的次数会互相<strong>“抵消”</strong>，从而在将来<strong>“相等”</strong>的概率很会很大。</p>
+<p>这种说法，对吗？</p>
+<blockquote>
+<p>PPPMS: 1.5 How Often Do Head and Tail Occur Equally Often?</p>
+</blockquote>
+<h1><span id="越多越好吗">越多越好吗？</span></h1>
+<p>今有一罐，罐中共有六球，三红三蓝。随机抽取一球（颜色记为 <span class="math inline">\(A\)</span> ）并从罐中取出，取出过程中小萌软和小绅士并不知道球的颜色。他们要通过有放回的抽取猜测被移除的球的颜色。</p>
+<p>小绅士比较自信，选择一共抽取6次，结果所有抽出的球都是红色的；小萌软则比较谨慎，选择一共抽取600次，结果抽取303次红球，297次蓝球。他们俩都觉得被移除的球 <span class="math inline">\(A\)</span> 是蓝球。</p>
+<p>如果你是路人甲🚶，你觉得谁的实验比较有说服力？</p>
+<blockquote>
+<p>PPPMS 1.6 Sample Size vs Signal Strength</p>
+</blockquote>
+<h1><span id="生日假期">生日假期</span></h1>
+<blockquote>
+<p>Cacoullos (1989, pp. 35-36)</p>
+<p>A worker's legal code specifies as a holiday any day during which at least one worker in a certain factory has a birthday. All other days are working days. How many workers(n) must the factory employ so that the expected number of working man-days is maximized during the year?</p>
+</blockquote>
+<p>小绅士做起生意来很黑心。他所在的世界线的劳动法规定：如果某一天是（至少）一个工人的生日，那么这一天为全场工人的假日，其余皆为法定工作日。这个听上去已经很黑心的放假制度下，小绅士居然还要继续最大化他的工厂效益，实在是太黑心了。</p>
+<p>考虑如下“人日”指标: <span class="math inline">\(f(n) = nE(S)\)</span>，其中 <span class="math inline">\(n \in \mathbb{N}=\)</span>工厂总人数 ,$E(S) = $ 期望的工作天数。假定每个工人都一样能干，那么小绅士的工厂在理想状态下应该招多少人呢？</p>
+<blockquote>
+<p>PPPMS 1.7 Birthday Holidays</p>
+</blockquote>
+<h1><span id="谁的剪纸更大">谁的剪纸更大？</span></h1>
+<p>小萌软和小绅士手上各有一张长方形的📄纸。由于他们两个都是特别喜欢炫技又从来不干正经事的概率学家(Probablist)，他们决定使用一个<u>正随机变量</u>的<u>实现（Realization）[^1 ]</u> （记为 <span class="math inline">\(U\)</span> ）来决定剪出来的长方形（或者正方形）的边长。</p>
+<p>[超级懒但是又超级想炫技的]<strong>小绅士</strong>只生成了<span class="math inline">\(U\)</span>的一个实现值 （记为<span class="math inline">\(a\)</span>），于是他傲娇地剪出了一个边长为<span class="math inline">\(a\)</span>正方形。<strong>小萌软</strong>则[非常知性[^ 2 ]可爱而且同样特别喜欢炫技，所以她]生成了<span class="math inline">\(U\)</span>的两个实现值（分别记为<span class="math inline">\(b,c\)</span>）并以此剪出了一个长方形。问</p>
+<ul>
+<li>两张剪纸面积差是多少？谁的剪纸更大？</li>
+</ul>
+<p>[1] (*翻译不正确？)即该分布的一个（或一组）观测值</p>
+<p>[2] 我实在不知道原文为什么说小萌软 “like diversity&quot; 不就是剪一个长方形吗</p>
+<blockquote>
+<p>PPPMS 1.8 Random Areas</p>
+</blockquote>
+<h1><span id="最大化收益">最大化收益</span></h1>
+<p>人们常说：</p>
+<blockquote>
+<p>武大的男人都是武大郎</p>
+<p>武大的妹子都很可爱</p>
+</blockquote>
+<p><del>虽然我觉得我妹子最可爱</del> 但是武大的人不见得都很高。</p>
+<p>小绅士想看看小萌软对于武大人群的身高印象如何，但又觉得小萌软特别傲娇肯定不会和他玩这种弱智游戏。冥思苦想，他终于想出了一个方法：</p>
+<p>定义武汉大学人群的身高分布为（正随机变量）<span class="math inline">\(U\)</span> , 均值和方差 <span class="math inline">\(\mu, \sigma^2\)</span> 皆为有限正值 ，密度函数为 <span class="math inline">\(f = F&#39;\)</span>。小绅士邀请小萌软蹲守在武大南二门[^3 一个出口]，并选择一个常数<span class="math inline">\(c\in \mathbb{R}\)</span>作为一个预期值。从游戏开始，记下一个通过南二门的人身高为 <span class="math inline">\(u_0\)</span>：如果<span class="math inline">\(u_0 &gt; c\)</span> 则小萌软胜，否则小萌软输。</p>
+<p>为了让小萌软更加纠结并爱上这个游戏，小绅士决定<u>该 <span class="math inline">\(c\)</span> 值作为赌注</u>。果然小萌软开始犯难：</p>
+<ul>
+<li>如果谨慎选择了过低的 <span class="math inline">\(c\)</span> 值，显然更容易成功，但是奖励也就越低</li>
+<li>如果冒险选择了过高的 <span class="math inline">\(c\)</span> 值，虽然奖励非常诱人，但是概率太低</li>
+</ul>
+<p>根据以下两种情况帮助小萌软选择合适的c值</p>
+<ol style="list-style-type: decimal">
+<li>当该游戏没有惩罚（即胜利则获得c，否则获得0），考虑以下问题：</li>
+<li>用函数形式描述最大化收益的<span class="math inline">\(c\)</span>值特性</li>
+<li>求使<u>投机函数（hazard function</u>最大的<span class="math inline">\(c\)</span>值</li>
+<li>当$ U ～ exp() $ ，求<span class="math inline">\(c_{max}\)</span> 和 <span class="math inline">\(max\ G(c_{max})\)</span></li>
+<li>当该游戏有惩罚（即胜利则获得c，否则失去c），考虑以下问题：</li>
+<li>求期望收益 <span class="math inline">\(G(c)\)</span>的表达式并表示出使收益最大化的<span class="math inline">\(c\)</span>值</li>
+<li>这个游戏会不会不可接受？即其期望即使在最好情况下也能保证不为负吗？</li>
+<li>当$ U ～ exp() $ ，求<span class="math inline">\(c_{max}\)</span> 和 <span class="math inline">\(max\ G(c_{max})\)</span></li>
+</ol>
+<blockquote>
+<p>PPPMS 1.9 Maximize Your Gain</p>
+<p>PPPMS 1.10 Maximize Your Gain when Losses are Possible</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Probability/" rel="tag"># Probability</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/16/MathJax/" rel="next" title="MathJax and $\LaTeX$">
+                <i class="fa fa-chevron-left"></i> MathJax and $\LaTeX$
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/03/Math435_Homework2/" rel="prev" title="Math435 Homework2">
+                Math435 Homework2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Tairokiya & Touko</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/GindaChen" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text"><span id="&#x5973;&#x58EB;&#x4F18;&#x5148;1">&#x5973;&#x58EB;&#x4F18;&#x5148;&#xFF08;1&#xFF09;</span></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text"><span id="&#x5BF9;&#x51B3;&#x8D5B;">&#x5BF9;&#x51B3;&#x8D5B;</span></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text"><span id="&#x5973;&#x58EB;&#x4F18;&#x5148;2">&#x5973;&#x58EB;&#x4F18;&#x5148;&#xFF08;2&#xFF09;</span></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text"><span id="&#x5206;&#x810F;">&#x5206;&#x810F;</span></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text"><span id="&#x62B5;&#x6D88;">&#x62B5;&#x6D88;</span></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text"><span id="&#x8D8A;&#x591A;&#x8D8A;&#x597D;&#x5417;">&#x8D8A;&#x591A;&#x8D8A;&#x597D;&#x5417;&#xFF1F;</span></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text"><span id="&#x751F;&#x65E5;&#x5047;&#x671F;">&#x751F;&#x65E5;&#x5047;&#x671F;</span></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text"><span id="&#x8C01;&#x7684;&#x526A;&#x7EB8;&#x66F4;&#x5927;">&#x8C01;&#x7684;&#x526A;&#x7EB8;&#x66F4;&#x5927;&#xFF1F;</span></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">9.</span> <span class="nav-text"><span id="&#x6700;&#x5927;&#x5316;&#x6536;&#x76CA;">&#x6700;&#x5927;&#x5316;&#x6536;&#x76CA;</span></span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tairokiya & Touko</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"inlineMath":[["$","$"],["\\(","\\)"]]});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

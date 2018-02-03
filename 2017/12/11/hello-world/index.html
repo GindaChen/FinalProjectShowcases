@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans,en,ja,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo,Blog," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. —Hex">
+<meta name="keywords" content="Hexo,Blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello Hexo and how I build it (1&#x2F;10)">
+<meta property="og:url" content="https://gindachen.github.io/2017/12/11/hello-world/index.html">
+<meta property="og:site_name" content="🐈的梦">
+<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. —Hex">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://gindachen.github.io/path/to/image">
+<meta property="og:updated_time" content="2017-12-16T08:54:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hello Hexo and how I build it (1&#x2F;10)">
+<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. —Hex">
+<meta name="twitter:image" content="https://gindachen.github.io/path/to/image">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gindachen.github.io/2017/12/11/hello-world/"/>
+
+
+
+
+
+  <title>Hello Hexo and how I build it (1/10) | 🐈的梦</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">🐈的梦</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">梦里的东西很漂亮很漂亮的哦</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gindachen.github.io/2017/12/11/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tairokiya & Touko">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="🐈的梦">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hello Hexo and how I build it (1/10)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T01:13:00-06:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<p>—Hexo</p>
+</blockquote>
+<p>This is not my first time to build a Hexo blo on github (though previous ones are considered not satisfying at all that I just sealed them all into the Pandora box). I notice there are many great blogs sharing experienced ways to build a hexo blog, and I want to try summarize them and generate an automatic script that build a hexo blog for greenhands in Hexo.</p>
+<a id="more"></a>
+<h1><span id="quick-start">Quick Start</span></h1>
+<h3><span id="what-are-we-going-to-do">What are we going to do</span></h3>
+<ol style="list-style-type: decimal">
+<li>Quickly create a Hexo blog using <a href="https://pages.github.com" target="_blank" rel="noopener">GitPage</a></li>
+<li>Quickly create a blog page</li>
+<li>Quickly generate and deploy the blog online</li>
+</ol>
+<h2><span id="create-a-hexo-gitpage">Create a Hexo Gitpage</span></h2>
+<h3><span id="some-prerequisites">Some Prerequisites:</span></h3>
+<h4><span id="environment-setting">Environment Setting:</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git</span><br><span class="line">npm</span><br><span class="line">hexo</span><br><span class="line">hexo-deployer : npm install hexo-deployer-git</span><br></pre></td></tr></table></figure>
+<p>Highly recommend using commandline as hexo might be a bit tricky to handle using Desktop version of Github.</p>
+<h4><span id="steps">Steps:</span></h4>
+<p>1.Go to a folder and set environment up like this: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   /some/folder</span><br><span class="line">   |-- ...</span><br><span class="line">   |-- &lt;your-github-username&gt;.github.io</span><br><span class="line">   |-- &lt;your-github-username&gt;.github.io.hexo.gen</span><br><span class="line"></span><br><span class="line">e.g:</span><br><span class="line">   gindachen.github.io: the folder for deployment</span><br><span class="line">   gindachen.github.io.hexo.gen: the folder for development</span><br></pre></td></tr></table></figure></p>
+<h4><span id="possible-script">Possible script</span></h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">MYPATH=<span class="comment">#"path/to/gitpage" # Some folder</span></span><br><span class="line">USERNAME=<span class="comment">#"my_user_name"  # Your github username</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. Create Development Space</span></span><br><span class="line"><span class="comment"># Detail infornation google : Gitpage </span></span><br><span class="line"><span class="comment"># new directory name = "$USERNAME.github.io"</span></span><br><span class="line">GITPAGEPATH=<span class="string">"<span class="variable">$USERNAME</span>.github.io"</span></span><br><span class="line">DEVELOPPATH=<span class="string">"<span class="variable">$USERNAME</span>.github.io.hexo.gen"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> MYPATH</span><br><span class="line">mkdir GITPAGEPATH</span><br><span class="line">mkdir DEVELOPPATH</span><br><span class="line"></span><br><span class="line">hexo init DEVELOPPATH</span><br><span class="line"><span class="built_in">cd</span> DEVELOPPATH</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. [Test] hexo running</span></span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>Some things to be careful of:</p>
+<p>1.<code>Hexo init</code> command fail when generating blog in a non-empty folder. If you create the gitpage from github and pull it down, the folder is not empty: try <code>ls -a</code> the folder and you will see a <code>.git</code> folder hiding. Deleting the <code>.git</code> folder will not be wise. Instead, the encouraged way to do is to create it offline and them push it to github when done.</p>
+<h3><span id="create-a-blog-page">Create a blog page</span></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hexo new "Title name (or more precisely, file name)"</span></span><br><span class="line"><span class="comment"># hexo new title_name</span></span><br><span class="line">hexo new <span class="string">"Why Probability is Fun?"</span> <span class="comment"># Create a new post</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3><span id="run-server">Run server</span></h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-server</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p><strong>Known errors</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Run <code>hexo server</code> will force</p></li>
+<li><p>Prompt error after running hexo server:</p></li>
+</ol>
+<ul>
+<li>Check you <code>_config.yaml</code> file</li>
+<li>Search for <code>url</code> and see if the url is blank</li>
+<li>Put your <code>website url</code> in there to avoid the parse error <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># like this:</span></span><br><span class="line"><span class="attr">url:</span> <span class="attr">https://&lt;username&gt;.github.io</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3><span id="generate-static-files">Generate static files</span></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<hr>
+<h2><span id="using-mathjax">Using Mathjax</span></h2>
+<p>Warning: You might encounter many bugs in this section.</p>
+<h3><span id="next-theme-integrated">Next Theme integrated</span></h3>
+<p>Next theme integrates Mathjax. The simpliest way is to enable mathjax in Next theme:</p>
+<p>Install <code>Mathjax</code>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install mathjax --save</span><br><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-markdown-it-plus --save</span><br></pre></td></tr></table></figure>
+<p>Configurate mathjax in <code>next</code> theme config file:</p>
+<p>In <code>/themes/next/_config.yml</code>, find this and change it as follow</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MathJax Support</span></span><br><span class="line"><span class="attr">mathjax:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  per_page:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  cdn:</span> <span class="string">'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'</span></span><br><span class="line"><span class="attr">  inlineMath:</span> <span class="string">[</span> <span class="string">['$','$'],</span> <span class="string">["\\(","\\)"]</span> <span class="string">]</span></span><br><span class="line">  <span class="comment"># cdn:</span></span><br></pre></td></tr></table></figure>
+<p>Or open Mathjax in global configuration: in <code>/_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">math:</span></span><br><span class="line"><span class="attr">  engine:</span> <span class="string">'mathjax'</span> <span class="comment"># or 'katex'</span></span><br><span class="line"><span class="attr">  mathjax:</span></span><br><span class="line"><span class="attr">    src:</span> <span class="string">'//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line"><span class="attr">      inlineMath:</span> <span class="string">[</span> <span class="string">['$','$'],</span> <span class="string">["\\(","\\)"]</span> <span class="string">]</span></span><br><span class="line"><span class="attr">  katex:</span></span><br><span class="line"><span class="attr">    css:</span> <span class="comment">#custom_css_source</span></span><br><span class="line"><span class="attr">    js:</span> <span class="comment">#custom_js_source # not used</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line">      <span class="comment"># KaTeX config</span></span><br></pre></td></tr></table></figure>
+<p>(__Drafting: Sometimes the script might not work. Though many blogers )</p>
+<h3><span id="manually-integrate-in-each-post">Manually integrate in each post</span></h3>
+<p>If previous way doesnot work, this is guaranteed to work. Using the code makes inline and block formular works find.</p>
+<p>Like this:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &lt;Post Title&gt;</span><br><span class="line"></span><br><span class="line">date: &lt;Post Date&gt;</span><br><span class="line">tags: &lt;Post Tag&gt;</span><br><span class="line">---</span><br><span class="line">Add these two following blocks of code in your markdown starting from here #:</span><br><span class="line"></span><br><span class="line">&lt;script type="text/x-mathjax-config"&gt;</span><br><span class="line">// This script is used to configurate inline Mathjax </span><br><span class="line">// You will see how annoying it is when you try to use other tools to support inline math text</span><br><span class="line">MathJax.Hub.Config(&#123;tex2jax: &#123;inlineMath: [['$','$'], ['\\(','\\)']]&#125;&#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"&gt;</span><br><span class="line">// This script is to reference mathjax script</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>For example: (see my post <a href="/2017/12/11/why-probability-is-fun/">Why Probability Is Fun</a>)</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Why $P$robability Is Fun? </span><br><span class="line"></span><br><span class="line">date: 2017-12-11 01:13:07</span><br><span class="line">tags: Probability</span><br><span class="line">---</span><br><span class="line">&lt;script type="text/x-mathjax-config"&gt;</span><br><span class="line">// This script is used to configurate inline Mathjax </span><br><span class="line">// You will see how annoying it is when you try to use other tools to support inline math text</span><br><span class="line">MathJax.Hub.Config(&#123;tex2jax: &#123;inlineMath: [['$','$'], ['\\(','\\)']]&#125;&#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"&gt;</span><br><span class="line">// This script is to reference mathjax script</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">The following is the test of some formular:</span><br><span class="line"></span><br><span class="line">Cauchy Distribution </span><br><span class="line">$$</span><br><span class="line">f(x) = \frac1&#123;\pi&#125; \dot&#123;&#125; \frac1&#123;1+x^2&#125; \rm&#123;\ \ where \ \ &#125; x \in \Re</span><br><span class="line">$$</span><br><span class="line"></span><br><span class="line">Derivative </span><br><span class="line"></span><br><span class="line">$$</span><br><span class="line">f'(x<span class="emphasis">_0)=\lim_</span>&#123;\Delta x\to 0&#125; \frac&#123;f(x<span class="emphasis">_0+\Delta x) - f(x_</span>0)&#125;&#123;\Delta x&#125;</span><br><span class="line">$$</span><br><span class="line">and inline formulars like $\sum_&#123;i=1&#125;^ni = \frac&#123;(n+1) n&#125;&#123;2&#125;$ works fine too.</span><br></pre></td></tr></table></figure>
+<p>And it looks like this:</p>
+<blockquote>
+<p>Cauchy Distribution</p>
+<p><span class="math display">\[
+f(x) = \frac1{\pi} \dot{} \frac1{1+x^2} \rm{\ \ where \ \ } x \in \Re
+\]</span></p>
+<p>Derivative</p>
+<p><span class="math display">\[
+f&#39;(x_0)=\lim_{\Delta x\to 0} \frac{f(x_0+\Delta x) - f(x_0)}{\Delta x}
+\]</span></p>
+<p>and inline formulars like <span class="math inline">\(\sum_{i=1}^ni = \frac{(n+1) n}{2}\)</span> works fine too.</p>
+</blockquote>
+<hr>
+<h2><span id="tag-plugins">Tag Plugins</span></h2>
+<p>Refer: <a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="noopener">Tag Plugins - Hexo</a></p>
+<p>These are experiments to test tag plugins with different formats.</p>
+<h3><span id="codeblock-and-code-include">Codeblock and code include</span></h3>
+<p><strong>Codeblock</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% clodeblock summary http://the.link.com/#the_code</span><br><span class="line"><span class="code">	lang: &lt;somelanguage [e.g.: js]&gt;</span></span><br><span class="line">%&#125;</span><br><span class="line">...</span><br><span class="line">&#123;% endclodeblock %&#125;</span><br></pre></td></tr></table></figure>
+<p>Similar to this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">​```js</span><br><span class="line">...</span><br><span class="line">(but we cannot insert the link and summary to the code)</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Example:</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>_.compact</span><a href="http://underscorejs.org/#compact" target="_blank" rel="noopener">Underscore.js</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="literal">false</span>, <span class="number">2</span>, <span class="string">''</span>, <span class="number">3</span>]);</span><br><span class="line">=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;% codeblock lang:js  _.compact http://underscorejs.org/#compact Underscore.js %&#125;</span><br><span class="line">_.compact([0, 1, false, 2, &apos;&apos;, 3]);</span><br><span class="line">=&gt; [1, 2, 3]</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**Code Include**</span><br><span class="line"></span><br><span class="line">Include the code in `source` folder into your page</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Image and Vedio</span><br><span class="line"></span><br><span class="line">**Image**</span><br></pre></td></tr></table></figure>
+<img src="/path/to/image" class="[class names]" title="[width] [height] [title text [alt text]]">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">alternatively:</span><br><span class="line"></span><br><span class="line">```markdown</span><br><span class="line">![](/path/to/image.jpg)</span><br></pre></td></tr></table></figure>
+<p>but the right way to reference image is to use this plugin:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img /path/to/example.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
+<p>The image will show on post and the home page properly.</p>
+<p><strong>Vedio</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% iframe url [width] [height] %&#125;</span><br><span class="line">&#123;% youtube video_id %&#125;</span><br><span class="line">&#123;% vimeo video_id %&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Data File</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% for (var link in site.data.menu) &#123; %&gt; &lt;a href=&quot;&lt;%= site.data.menu[link] %&gt;&quot;&gt; &lt;%= link %&gt; &lt;/a&gt; &lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+            <a href="/tags/Blog/" rel="tag"># Blog</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/11/why-probability-is-fun/" rel="prev" title="Why Probability Is Fun?">
+                Why Probability Is Fun? <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Tairokiya & Touko</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/GindaChen" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text"><span id="quick-start">Quick Start</span></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text"><span id="what-are-we-going-to-do">What are we going to do</span></span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text"><span id="create-a-hexo-gitpage">Create a Hexo Gitpage</span></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text"><span id="some-prerequisites">Some Prerequisites:</span></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"><span id="environment-setting">Environment Setting:</span></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"><span id="steps">Steps:</span></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.3.</span> <span class="nav-text"><span id="possible-script">Possible script</span></span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.2.</span> <span class="nav-text"><span id="create-a-blog-page">Create a blog page</span></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.3.</span> <span class="nav-text"><span id="run-server">Run server</span></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.4.</span> <span class="nav-text"><span id="generate-static-files">Generate static files</span></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.5.</span> <span class="nav-text"><span id="deploy-to-remote-sites">Deploy to remote sites</span></span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text"><span id="using-mathjax">Using Mathjax</span></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.1.</span> <span class="nav-text"><span id="next-theme-integrated">Next Theme integrated</span></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.2.</span> <span class="nav-text"><span id="manually-integrate-in-each-post">Manually integrate in each post</span></span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text"><span id="tag-plugins">Tag Plugins</span></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.1.</span> <span class="nav-text"><span id="codeblock-and-code-include">Codeblock and code include</span></span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tairokiya & Touko</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"inlineMath":[["$","$"],["\\(","\\)"]]});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
