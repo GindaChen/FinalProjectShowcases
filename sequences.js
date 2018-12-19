@@ -22,6 +22,9 @@ url2 = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/
 
 function singleTestCase() {
 	main(url)
+	setTimeout(function(){
+		main(url2)
+	} , 1000)
 }
 
 
@@ -37,7 +40,7 @@ function multipleTestCase() {
 }
 
 
-singleTestCase()
+multipleTestCase()
 
 
 // @Define Dimensions of sunburst.
@@ -201,7 +204,7 @@ function createVisualization(json) {
 
 	// TODO: An elegant (black magic) solution
 	//  to avoid gliches of the first click option
-	click(prevTarget == null ? root : prevTarget);
+	// click(root);
  }
 
 // TODO: Implement for transition
