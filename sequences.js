@@ -1,5 +1,26 @@
 // visit-sequence.js
 
+// Main Execution
+
+function main(url){
+	d3.json(url, function(text){
+		createVisualization(text);
+	});
+}
+
+// url = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/product/kelly.product.json"
+url = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/product/beesly.product.json"
+// url = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/product/erin.product.json"
+// url = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/product/jim.product.json"
+
+// url = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/timeseries/erin.timeseries.0.json"
+// url = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/timeseries/kelly.timeseries.1.json"
+// url = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/timeseries/erin.timeseries.1.json"
+main(url)
+
+
+
+
 // @Define Dimensions of sunburst.
 var width = 750;
 var height = 600;
@@ -56,22 +77,6 @@ var arc = d3.arc()
 	.innerRadius(function(d) { return Math.sqrt(d.y0); })
 	.outerRadius(function(d) { return Math.sqrt(d.y1); });
 
-
-// url = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/product/kelly.product.json"
-// url = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/product/beesly.product.json"
-url = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/product/erin.product.json"
-// url = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/product/jim.product.json"
-
-jsonData = null; // async var
-d3.json(url, function(text){
-	jsonData = text;
-	createVisualization(text);
-});
-
-
-function rebuild(){
-	createVisualization(text);
-}
 
 var root = null;
 
@@ -154,6 +159,7 @@ function createVisualization(json) {
 		//return rgbString(r,g,b);
 
 		return d3.hsl(h, 0.80, 0.5, fraction == 1 ? 0.4: 1);
+		// return d3.hsl(h, 0.80, 0.5, fraction == 1 ? 0.4: 1);
 
 	});
 
@@ -162,6 +168,10 @@ function createVisualization(json) {
 
 	// Get total size of the tree = value of root node from partition.
 	totalSize = path.datum().value;
+
+	// TODO: An elegant (black magic) solution
+	//  to avoid gliches of the first click option
+	click(root);
 
  };
 
@@ -185,51 +195,56 @@ function createVisualization(json) {
 
  	prevTarget = target;
 
- 	
  	// 1. Transition zoom in 
+ 	// TODO: Adjust x0 and x1
  	root.each(function(d){
       d.target = {
-        x0: Math.max(0, Math.min(1, (d.x0 - target.x0) / (target.x1 - target.x0))) * 2 * Math.PI,
+      	x0: Math.max(0, Math.min(1, (d.x0 - target.x0) / (target.x1 - target.x0))) * 2 * Math.PI,
         x1: Math.max(0, Math.min(1, (d.x1 - target.x0) / (target.x1 - target.x0))) * 2 * Math.PI,
         y0: Math.max(0, d.y0 - target.y0),
-        // y0: Math.max(0, d.y0 - p.depth),
         y1: Math.max(0, d.y1 - target.y0)
-        // y1: Math.max(0, d.y1 - p.depth)
       };
     });
 
-    const t = vis.transition().duration(300);
+ 	
+	t = vis.transition().duration(300);
 
     d3.selectAll("path").transition(t)
 	.tween("data", d => {
 		const i = d3.interpolate(d.current, d.target);
 		return t => d.current = i(t);
 	})
+	.attrTween("d", d => () => arc(d.current))
 	.attr("fill-opacity", d => {
 		if(d == target){ return 0; }
 		return 1;
 	})
-	.attrTween("d", d => () => arc(d.current));
 
- }
+}
 
 
 // TODO: Ugly Code
+osd_properties = {
+	"crush_weight": Number,
+	"depth": Number,
+	"exists": Boolean,
+	"device_class": String,
+	"primary_affinity": Number,
+	"reweight": Number,
+	"status": String,
+};
+
 function dataToString(item){
 	data = item.data;
 	if (data.type == "osd") {
-		// TODO: This is an ugly, ugly, ugly code.
-		return  "crush_weight: " + String(data.crush_weight) + "\n" +
-	"depth: " + String(data.depth) + "\n" +
-	"device_class: " + String(data.device_class) + "\n" +
-	"exists: " + String(data.exists) + "\n" +
-	"primary_affinity: " + String(data.primary_affinity) + "\n" +
-	"reweight: " + String(data.reweight) + "\n" +
-	"status: " + String(data.status) + "\n";
-
+		var keys = Object.getOwnPropertyNames(osd_properties);
+		return keys.map(function(d){
+			var foo = osd_properties[d];
+			return d + ": " + foo(data[d])
+		}).join("\n");
 	}
 	return "id: " + String(data.id)   + "\n" +
-			 "type: " + String(data.type) + "\n";
+		"type: " + String(data.type) + "\n";
 }
 
 
@@ -267,39 +282,24 @@ function mouseover(d) {
 	// Fade all the segments.			
 	d3.selectAll("path").style("opacity", 0.3);
 
-	// Then highlight only those that are an ancestor of the current segment.
-	vis.selectAll("path")
+	// If the selection is the current expanded element, 
+	// highlight its direct decendents
+	if (prevTarget == d) {
+		var haloDepth = prevTarget.depth + 1;
+		vis.selectAll("path")
+		.filter(function(node) {
+			return (node.depth <= haloDepth);
+		})
+		.style("opacity", 1);
+	} else{
+		// If the selection is not the current expanded element,
+		// highlight only those that are an ancestor of the current segment.
+		vis.selectAll("path")
 		.filter(function(node) {
 			return (sequenceArray.indexOf(node) >= 0);
 		})
 		.style("opacity", 1);
-
-	// -- Animation (local)
-
-	// var selectedPath = d3.select(this);
-	
-	// d.isMouseOver = true;
-	// d.colorString = selectedPath.style("fill");
-
-	// pulsate(selectedPath);
-	
-	// function pulsate(path){
-
-	// 	animate();
-
-	// 	function animate(){
-	// 		let originalColor = path.data()[0].colorString;
-	// 		if (selectedPath.data()[0].isMouseOver) {
-	// 			selectedPath.transition().delay(1000).duration(10).style("fill", "#FFF").ease(d3.easeCubic)
-	// 						.transition().delay(1000).duration(10).style("fill", originalColor).ease(d3.easeCubic)
-	// 						// .each("end", animate);
-	// 		}else{
-	// 			selectedPath.transition().duration(10).style("fill", originalColor);
-	// 		}
-	// 	}
-	// }
-
-
+	}
 }
 
 // Restore everything to full opacity when moving off the visualization.
@@ -324,22 +324,6 @@ function mouseleave(d) {
 	d3.select("#explanation")
 		.style("visibility", "hidden");
 
-		var selectedPath = d3.select(this);
-	
-	// -- Animation (local)
-
-	// d.isMouseOver = false;
-	// d.colorString = selectedPath.style("fill");
-
-	// stopPulsate(selectedPath);
-	
-	// function stopPulsate(path){
-	// 	animate();
-	// 	function animate(){
-	// 		console.log(path);
-	// 		path.selectAll("*").interrupt();
-	// 	}
-	// }
 }
 
 function initializeBreadcrumbTrail() {
