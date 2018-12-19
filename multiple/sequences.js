@@ -29,7 +29,7 @@ function singleTestCase() {
 
 
 function multipleTestCase() {
-	a = [0]
+	a = [0, 1, 2, 3, 4, 5, 6, 7]
 	a.map(function(d){
 		setTimeout(function(){
 			var dataurl = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/timeseries/beesly.timeseries." + d +".json"
