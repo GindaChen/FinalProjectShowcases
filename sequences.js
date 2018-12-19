@@ -22,9 +22,6 @@ url2 = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/
 
 function singleTestCase() {
 	main(url)
-	setTimeout(function(){
-		main(url2)
-	} , 1000)
 }
 
 
@@ -204,7 +201,7 @@ function createVisualization(json) {
 
 	// TODO: An elegant (black magic) solution
 	//  to avoid gliches of the first click option
-	// click(root);
+	click(prevTarget == null ? root : prevTarget);
  }
 
 // TODO: Implement for transition
