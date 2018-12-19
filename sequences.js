@@ -236,7 +236,7 @@ function createVisualization(json) {
 
 
 	// t = vis.selectAll("path").transition().duration(1000);
-	t = 1000;
+	t = 200;
   vis.selectAll("path").transition().duration(t)
 	.tween("data", d => {
 		const i = d3.interpolate(d.current, d.target);
