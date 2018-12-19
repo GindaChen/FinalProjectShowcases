@@ -22,9 +22,6 @@ url2 = "https://raw.githubusercontent.com/GindaChen/cs739-osdvisual/master/data/
 
 function singleTestCase() {
 	main(url)
-	setTimeout(function(){
-		main(url2)
-	} , 1000)
 }
 
 

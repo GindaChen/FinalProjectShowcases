@@ -57,12 +57,12 @@ var b = {
 
 var type_color = {
 	"root" : "#089ec7",
+	"ipservice" : "#de783b",
 	"room" : "#6ab975",
 	"rack" : "#1ac9be",
 	"row" : "#008c62",
 	"host" : "#5687d1",
 	"osd" : "#7b615c",
-	"ipservice" : "#de783b"
 };
 
 var osd_color = {
